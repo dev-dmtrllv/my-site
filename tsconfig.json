@@ -24,6 +24,9 @@
 			],
 			"ssr/*": [
 				"src/ssr/*"
+			],
+			"utils/*": [
+				"src/utils/*"
 			]
 		}
 	},
