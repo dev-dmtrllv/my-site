@@ -54,6 +54,9 @@ export class Renderer
 			</AsyncProvider>
 		);
 
+		for (const id in ssrData.async)
+			if (id.startsWith("DYNAMIC"))
+				delete ssrData.async[id];
 
 		// const mainJS = this.server.manifest.get("main", "js");
 		// const chunkJS = this.server.manifest.get("chunks", "js");
