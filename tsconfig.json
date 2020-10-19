@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "esnext",
+		"rootDir": ".",
+		"outDir": "./build",
+		"sourceMap": true,
+		"jsx": "preserve",
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"noImplicitAny": true,
+		"noImplicitUseStrict": true,
+		"strictNullChecks": true,
+		"baseUrl": ".",
+		"paths": {
+			"app/*": [
+				"src/app/*"
+			],
+			"server/*": [
+				"src/server/*"
+			],
+			"ssr/*": [
+				"src/ssr/*"
+			]
+		}
+	},
+	"exclude": [
+		"node_modules",
+		".vscode",
+		"build",
+		"package.json",
+		"package-lock.json",
+		"*.code-workspace"
+	]
+}
