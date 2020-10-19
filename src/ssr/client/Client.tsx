@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { AsyncProvider } from "ssr/async";
+import { asyncPrefetch, AsyncProvider } from "ssr/async";
 import { SSRData } from "ssr/SSRData";
 
 export class Client
@@ -28,7 +28,7 @@ export class Client
 		return this._ssrData;
 	}
 
-	public static render(App: React.ComponentClass | React.FC)
+	public static async render(App: React.ComponentClass | React.FC)
 	{
 		if (process.env.isDev)
 		{
@@ -38,12 +38,12 @@ export class Client
 			socket.on("reload", (data: any) => window.location.reload());
 		}
 
-		const jsx = (
-			<AsyncProvider initData={this.ssrData.async}>
+		const asyncData = await asyncPrefetch(<App />, this.ssrData.async);
+
+		ReactDOM.hydrate(
+			<AsyncProvider initData={asyncData}>
 				<App />
 			</AsyncProvider>
-		);
-
-		ReactDOM.hydrate(jsx, document.getElementById("root"));
+		, document.getElementById("root"));
 	}
 }
