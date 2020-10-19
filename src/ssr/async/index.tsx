@@ -3,3 +3,4 @@ export * from "./AsyncContext";
 export * from "./AsyncData";
 export * from "./AsyncProvider";
 export * from "./AsyncPrefetcher";
+export * from "./Dynamic";
